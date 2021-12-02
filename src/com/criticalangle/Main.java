@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Connection connection = new Connection(Integer.parseInt(args[0]));
+        Connection connection = new Connection(9527);
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -18,5 +18,7 @@ public class Main {
 
             connection.sendBroadcast(line);
         }
+
+        connection.closeReceiver();
     }
 }

@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
 
 public class Connection {
     public DatagramSocket socket;
+
+    private boolean shouldReceive = true;
 
     public Connection(int port) {
         try {
@@ -24,7 +24,7 @@ public class Connection {
             byte[] buffer = new byte[Constants.MAX_BUFFER_SIZE];
             DatagramPacket packet = new DatagramPacket(buffer, Constants.MAX_BUFFER_SIZE);
 
-            while (socket != null) {
+            while (socket != null && shouldReceive) {
                 try {
                     socket.receive(packet);
                     System.out.println(new String(buffer));
@@ -33,6 +33,11 @@ public class Connection {
                 }
             }
         }).start();
+    }
+
+    public void closeReceiver() {
+        this.shouldReceive = false;
+        this.socket.close();
     }
 
     public void sendBroadcast(String text) {
