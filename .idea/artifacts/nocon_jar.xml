@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="nocon:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/nocon_jar</output-path>
+    <root id="archive" name="nocon.jar">
+      <element id="module-output" name="nocon" />
+    </root>
+  </artifact>
+</component>
