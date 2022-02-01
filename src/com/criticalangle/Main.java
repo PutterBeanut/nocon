@@ -9,11 +9,7 @@ public class Main {
 
         // Creates connection and scanner.
         Connection connection = new Connection(9527);
-        Scanner scanner = new Scanner(System.in);
-
-        // Gets username from user.
-        System.out.print("Username: ");
-        String username = scanner.nextLine();
+        String username = Username.promptUsername();
 
         // Printed after the username and text to avoid X box error.
         String whiteSpaces = "                                                         ";
